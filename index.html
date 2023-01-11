@@ -1,32 +1,58 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Let's FIZZBUZZ!</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    <script src='script.js' defer></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="./js/script.js" defer=""></script>
+    <link rel="stylesheet" href="css/homework.css">
+
+    <title>homework3</title>
 </head>
-
 <body>
-    <main>
-        <h1>FIZZ? BUZZ? FIZZBUZZ! </h1>
-        <div class="navContainer">
-            <label>Smallest number: </label><input type="number" name="field"  id="minInput"  min="1" max="99" onpaste="return false">
-            <label>Largest number: </label><input type="number" name="field"  id="maxInput"  min="2" max="100" onpaste="return false">
-            <lable>Fizz number:</lable><input id="fizzValue" type="number" value="3">
-            <lable>Buzz number:</lable><input id="buzzValue" type="number" value="5">
-            <button id="btn1">RESET</button>
-            <button id="btn2">REFRESH</button>
-            
-        </div>
-        
-        <div id="container">
-        </div>
-
-    </main>
     
-</body>
-</html>
+    <main id="box">
+        <h1>FIZZ? BUZZ? FIZZBUZZ! </h1>
+        <div id="box1">
+            <h3>Start value :</h3><input id="startValue" type="number" value="1">
+            <h3>End value :</h3><input id="endValue" type="number" value="100">
+            <h3>Fizz value :</h3><input id="fizzValue" type="number" value="3">
+            <h3>Buzz value :</h3><input id="buzzValue" type="number" value="5">
+        </div>
+        <div id="box2">
+            <h3>Fizz color :</h3><input id="fizzColor" type="color" value="#ff35c9">
+            <h3>Buzz color :</h3><input id="buzzColor" type="color" value="#aaaa00">
+            <h3>FizzBuzz color :</h3><input id="fizzBuzzColor" type="color" value="#0000ff">
+            <h3>None color :</h3><input id="noneColor" type="color" value="#005500">
+        </div>
+        <div id="box3">
+                <div class="box3-1">
+                    <input type="range" min="10" max="90" value="90" id="elWidth" name="widthLabel">undefined
+                        <div class="sliderLabel">
+                            <p>Width : <span id="elWidthOutput"></span></p>
+                        </div>
+                </div>
+                <div class="box3-1">
+                    <input type="range" min="10" max="90" value="90" id="elHeight" name="heightLabel">undefined
+                        <div class="sliderLabel">
+                            <p>Height : <span id="elHeightOutput"></span></p>
+                        </div>
+                </div>
+        </div>
+      
+        <div id="box4">
+            <button type="submit" id="an">Load default boxes</button><br>
+            <button type="submit" id="an1">Clear all boxes</button><br>
+            <button type="submit" id="an2">Load personalized boxes</button><br>
+        </div>
+        <div id="nr"></div>
+    </main>
+    <footer style = " height: 80px; background-color:#607D8B; width: 100%; text-align: center;">  
+        <h3 style = " color: #fff; text-align: center; padding-top: 10px; font-size: 30px; " >This page is created by</h3>  
+        <p> © Lingxi Guo and Xinyi Yan, 2023 </p >  
+        </footer> 
+
+
+</body
+></html>
