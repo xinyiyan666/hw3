@@ -114,7 +114,8 @@ main h1{
     margin-top: 20px;
     margin-right: 30px;
     margin-bottom: 20px;
-    
+    height:65px;
+    appearance: auto;
 }
 
 .sliderLabel {
