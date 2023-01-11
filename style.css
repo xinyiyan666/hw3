@@ -106,7 +106,7 @@ main h1{
 }
 
 .box3-1 {
-    width: 100%;
+    width: 60%;
     background-color: #adb1b4;
     float:left;
     border-style:double;
@@ -114,8 +114,7 @@ main h1{
     margin-top: 20px;
     margin-right: 30px;
     margin-bottom: 20px;
-    width:700px;
-    height: 65x;
+    
 }
 
 .sliderLabel {
