@@ -1,120 +1,143 @@
 
- 
-const inputMin = document.getElementById("minInput");
-const inputMax = document.getElementById("maxInput");
-const main = document.getElementById("container");
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
+console.log('Script started');
 
-// starting value on page refresh.
-inputMin.value = 1;
-inputMax.value = 100;
-
-const create = function () {            //Creating function that will generate 100 divs.
-while (main.firstChild) {
-    main.removeChild(main.firstChild);
-};
-
-//this line creates 100 divs and hides all that do not match input values.
-
-for (let i = 1; i <= 100; i++) {     
-// for( i = inputMin.value; i <= inputMax.value; i++ ) { // <--- 'UNcomment' this line to create divs according to input values.
-    let newDiv = document.createElement("div");
-    let newPar = document.createElement("p");
-
-    newDiv.appendChild(newPar);
-    main.appendChild(newDiv).setAttribute("id", "divnumber_" + i);    // giving "id" name to every div
-
-    if (i < inputMin.value || i > inputMax.value) {
-        newDiv.style = "display: none";
-    } else {
-        if (i % 3 === 0 && i % 5 === 0) {                              
-            newPar.appendChild(document.createTextNode(i + '⭐FIZZ BUZZ'));
-            main.appendChild(newDiv).setAttribute("class", "fizbuz");   // this adds class to divs
-
-        } else if (i % 3 === 0) {
-            newPar.appendChild(document.createTextNode(i + '🔺FIZZ'));
-            main.appendChild(newDiv).setAttribute("class", "fiz");
-
-        } else if (i % 5 === 0) {
-            newPar.appendChild(document.createTextNode(i + '🔻BUZZ'));
-            main.appendChild(newDiv).setAttribute("class", "buz");
-
-        } else {
-            newPar.appendChild(document.createTextNode(i));
-            main.appendChild(newDiv).setAttribute("class", "num");
-        }
-    }
+function innit () {
+    console.log('Adding listeners')
+    addListeners();
+    document.getElementById('nr');
+    
+    var clearButton = document.getElementById('an1');
+    clearButton.addEventListener("click", onClickClear);
+    var submitCustom = document.getElementById('an2');
+    submitCustom.addEventListener("click", onClickCustom);
 }
-};    
 
-create();
+var sl1 = document.getElementById("elWidth");
+var sl1Value = document.getElementById("elWidthOutput");
+sl1.innerHTML = sl1Value.value;
 
-//This adds event to first INPUT - sets min value.
+sl1.oninput = function() {
+  sl1Value.innerHTML = this.value;
+}
 
-inputMin.onkeyup = function (e) {
-    this.value = inputMin.value.replace(/^(0*)/, "");
-    if (inputMin.value >= 1 && inputMin.value <= 100) {
-        this.value = inputMin.value;
-    } else if (inputMin.value.length === 0) {
-        inputMin.value = null;
-    } else {
-        inputMin.value = null;
-        alert("Incorrect number!");
+var sl2 = document.getElementById("elHeight");
+var sl2Value = document.getElementById("elHeightOutput");
+sl2.innerHTML = sl2Value.value;
+
+sl2.oninput = function() {
+  sl2Value.innerHTML = this.value;
+}
+
+function onClick() {
+    onClickClear();
+    console.log('Button hit');
+        for(let i = 1; i<101; i++){
+            const element = document.createElement('div');
+            element.className="element" + i;
+            nr.appendChild(element);
+                if (i % 3 ===0 && i % 5 === 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "FizzBuzz");
+                    element.innerText="FizzBuzz⭐" + i;
+                }
+                else if (i % 3 === 0 && i % 5 !== 0) {
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Fizz");
+                    element.innerText="Fizz🔺" + i;
+                    
+                }
+
+                else if (i % 5 === 0 && i % 3 !== 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Buzz");
+                    element.innerText="Buzz🔻" + i;
+                    
+                }
+
+                else if (i % 3 !== 0 && i % 5 !== 0){
+                    element.setAttribute("id", "element" +i);
+                    element.setAttribute("class", "Empty");
+                    element.innerText=i;
+                    
+                }
+        }
+}
+
+function onClickClear () {
+    while (nr.firstChild) {
+        nr.removeChild(nr.firstChild);
     }
-    if (!((e.keyCode > 95 && e.keyCode < 106)
-        || (e.keyCode > 47 && e.keyCode < 58)
-        || [8, 13, 37, 39].indexOf(e.keyCode) >= 0
-    )) {
-        return false;
-    }
-    create();
-};
+    console.log('Divs cleared');
+}
 
-//This adds event to second INPUT - sets max value.
+function onClickCustom (){
+    onClickClear();
+    console.log('Divs cleared');
+    console.log('Generate custom divs');
+    var startValue = document.getElementById('startValue').value;
+    var endValue = document.getElementById('endValue').value;   
+    var fizzValue = document.getElementById('fizzValue').value;
+    var buzzValue = document.getElementById('buzzValue').value;
+    var fizzColor = document.getElementById('fizzColor').value;
+    var buzzColor = document.getElementById('buzzColor').value;
+    var fizzBuzzColor = document.getElementById('fizzBuzzColor').value;
+    var noneColor = document.getElementById('noneColor').value;
+    console.log('start value - ' + startValue);
+    console.log('end value - ' + endValue);
+    console.log('fizz value - ' + fizzValue);
+    console.log('buzz value - ' + buzzValue);
+    console.log('fizz color - ' + fizzColor);
+    console.log('buzz color - ' + buzzColor);
+    console.log('fizzbuzz color - ' + fizzBuzzColor);
+    console.log('none color - ' + noneColor);
+        for (startValue; startValue<=endValue; startValue++){
+            const element = document.createElement('div');
+            element.id="element" + startValue;
+            
+            nr.appendChild(element);
+                if (startValue % fizzValue === 0 && startValue % buzzValue === 0){
+                    element.setAttribute("id", "element" +startValue);
+                    element.setAttribute("class", "FizzBuzz");
+                    element.innerText="FizzBuzz " + startValue;
+                    element.style.backgroundColor=fizzBuzzColor;
+                    element.style.width=sl1.value + "px";
+                    element.style.height=sl2.value + "px";
+                }
+                else if (startValue % fizzValue === 0 && startValue % buzzValue !== 0) {
+                    element.setAttribute("id", "element" +startValue);
+                    element.setAttribute("class", "Fizz");
+                    element.innerText="Fizz " + startValue;
+                    element.style.backgroundColor=fizzColor;
+                    element.style.width=sl1.value + "px";
+                    element.style.height=sl2.value + "px";
+                }
 
-inputMax.onkeyup = function (e) {
-    this.value = inputMax.value.replace(/^(0*)/, "");
-    if (inputMax.value >= 1 && inputMax.value <= 100) {
-        this.value = inputMax.value;
-    } else if (inputMax.value.length === 0) {
-        inputMax.value = null;
-        
-    } else {
-        inputMax.value = null;
-        alert("Incorrect number!");
-    }
-    if (!((e.keyCode > 95 && e.keyCode < 106)
-        || (e.keyCode > 47 && e.keyCode < 58)
-        || [8, 13, 37, 39].indexOf(e.keyCode) >= 0
-    )) {
-        return false;
-    }
-    create();
-};
+                else if (startValue % buzzValue === 0 && startValue % fizzValue !== 0){
+                    element.setAttribute("id", "element" +startValue);
+                    element.setAttribute("class", "Buzz");
+                    element.innerText="Buzz " + startValue;
+                    element.style.backgroundColor=buzzColor;
+                    element.style.width=sl1.value + "px";
+                    element.style.height=sl2.value + "px";
+                }
 
-// Buttons RESET and REFRESH
+                else if (startValue % fizzValue !== 0 && startValue % buzzValue !== 0){
+                    element.setAttribute("id", "element" +startValue);
+                    element.setAttribute("class", "Empty");
+                    element.innerText=startValue;
+                    element.style.backgroundColor=noneColor;
+                    element.style.width=sl1.value + "px";
+                    element.style.height=sl2.value + "px";
 
-btn1.onclick = function() {
-    inputMin.value = "";
-    inputMax.value = "";
-    create();
-};
+                }
+        }
+}
 
-btn2.onclick = function() {
-    inputMin.value = 1;
-    inputMax.value = 100;
-    create();
-};
+ function addListeners() {
+    const submit = document.getElementById('an');
+    submit.onclick = onClick;
+}
 
 
 
-
-
-
-
-
-
-
-
-
+innit();
